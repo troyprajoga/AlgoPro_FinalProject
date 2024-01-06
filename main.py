@@ -144,16 +144,16 @@ class SummarizeGUI:
     # This saves the summary into a text file using the dictionary
     def save_summary(self):
         saved_data = {
-            "Title": self.title.get('1.0', 'end').strip(),
-            "Author": self.author.get('1.0', 'end').strip(),
-            "Publish Date": self.publication.get('1.0', 'end').strip(),
-            "Summary": self.summary.get('1.0', 'end').strip(),
-            "Sentiment": self.sentiment.get('1.0', 'end').strip()
+            "Title": self.article_info["Title"],
+            "Author": self.article_info["Author"],
+            "Publish Date": self.article_info["Publish Date"],
+            "Summary": self.article_info["Summary"],
+            "Sentiment": self.article_info["Sentiment"]
         }
 
         # Writes content into the text file
         with open("file.txt", "w") as file:
-            for key, value in self.article_info.items():
+            for key, value in saved_data.items():
                 file.write(f"{key}: {value}\n")
 
     # Creates the GUI by calling the widgets function and also  adding a little bit of it's own unique attributes
